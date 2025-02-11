@@ -76,10 +76,33 @@ for (let number of numbers) {
 console.log(sum);
 let largeArrayOfNumbers = [2, 3, 1, 5, 2, 3, 23, 43, 12, 98, 65, 4, 37, 58, 88];
 // let largeArrayOfNumbers = [2, 3, 1, 5, 2, 3];
+
+// With index, simple for loop
 let max = largeArrayOfNumbers[0];
-for (let i of largeArrayOfNumbers) {
-    if (max < largeArrayOfNumbers[i]) max = largeArrayOfNumbers[i]
-    // else if (min > largeArrayOfNumbers[i]) min = largeArrayOfNumbers[i];
+let min = largeArrayOfNumbers[0];
+for (let i = 0; i < largeArrayOfNumbers.length; i++) {
+    if (max < largeArrayOfNumbers[i]) max = largeArrayOfNumbers[i];
+    if (min > largeArrayOfNumbers[i]) min = largeArrayOfNumbers[i];
 }
-console.log(max);
-// console.log(min);
+console.log(`min: ${min}`);
+console.log(`max: ${max}`);
+
+// With index, for...in => works but is less efficient (iterates over indexes, better suited for objects), typically used for objects, not arrays:
+max = largeArrayOfNumbers[0];
+min = largeArrayOfNumbers[0];
+for (let i in largeArrayOfNumbers) {
+    if (max < largeArrayOfNumbers[i]) max = largeArrayOfNumbers[i];
+    if (min > largeArrayOfNumbers[i]) min = largeArrayOfNumbers[i];
+}
+console.log(`min: ${min}`);
+console.log(`max: ${max}`);
+
+// Without index, for...of =>  for arrays, direct value iteration, more readable and efficient
+max = largeArrayOfNumbers[0];
+min = largeArrayOfNumbers[0];
+for (let number of largeArrayOfNumbers) {
+    if (max < number) max = number;
+    if (min > number) min = number;
+}
+console.log(`min: ${min}`);
+console.log(`max: ${max}`);
